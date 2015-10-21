@@ -32,6 +32,7 @@ int main()
 	}
 	printf("AVL tree:\n");
 	printTree(root);
+	printf("\n\nHeight of the tree is  %d \n",root->height);
 	printf("\n\n");
 	return;
 }
@@ -40,7 +41,7 @@ struct node *leftRotate(struct node *root)
 	struct node *newRoot=root->right;
 	root->right=newRoot->left;
 	newRoot->left=root;
-	root->height=1+max(newRoot->left,newRoot->right);
+	root->height=1+max(root->left,root->right);
 	newRoot->height=1+max(newRoot->left,newRoot->right);
 	return newRoot;
 	
@@ -122,6 +123,7 @@ struct node *newNode(int data)
 	struct node *node;
 	node=malloc(sizeof(struct node));
 	node->data=data;
+	node->height=1;
 	node->left=NULL;
 	node->right=NULL;
 	return(node);
